@@ -1,0 +1,7 @@
+{
+  "name": "Node_API_GloboNews",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

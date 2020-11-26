@@ -1,0 +1,101 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ folder }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="folder == 'Home'">
+  <p>Bem-vindo ao CartoNews! Esse aplicativo existe com o objetivo de lhe trazer as notícias mais importantes do momento, além de lhe proporcionar um mapa para localização e navegação.</p>
+  <a href="https://github.com/Starkill3r">Meu GitHub</a>
+</ion-content>
+
+<ion-content [fullscreen]="true" *ngIf="folder == 'News'">
+  <ion-refresher slot="fixed" (ionRefresh)="efeitoRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+    <ion-card *ngFor="let article of articles">
+    <ion-img src="{{article.urlToImage}}"></ion-img>
+    <ion-card-header>
+      <ion-card-subtitle>{{article.title}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        {{article.description}}
+      </p>
+      <ion-button ion-button fill="outline" href="{{article.url}}" large>Read full article</ion-button>
+  
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-header [translucent]="true" *ngIf="folder == 'Maps'">
+
+  <ion-toolbar color="warning">
+    <ion-button (click)="loadMap()" shape="round" color="dark">
+      <ion-icon slot="start" name="locate"></ion-icon>
+      Where I Am
+    </ion-button>
+    <ion-title slot="end">Google Map</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true" *ngIf="folder == 'Maps'">
+
+  <div class="map-wrapper">
+    <div id="map_center">
+      <img src="assets/icon/location-marker.png" />
+    </div>
+    <div #map id="map"></div>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="3">
+        <b>Lattitude</b>
+      </ion-col>
+      <ion-col>
+        {{latitude}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="3">
+        <b>Longitude</b>
+      </ion-col>
+      <ion-col>
+        {{longitude}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="3">
+        <b>Address</b>
+      </ion-col>
+      <ion-col>
+        {{address}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer style='text-align: center;' *ngIf="folder == 'Home'">
+  <p>v1.0</p>
+ <p> Desenvolvido por Filipe Borges</p>
+</ion-footer>
+
+
+<!--<ion-card *ngFor="let article of articles">
+    <ion-img src="{{article.urlToImage}}"></ion-img>
+    <ion-card-header>
+      <ion-card-subtitle>{{article.title}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        {{article.description}}
+      </p>
+      <ion-button ion-button fill="outline" href="{{article.url}}" large>Read full article</ion-button>
+  
+    </ion-card-content>
+  </ion-card>-->
