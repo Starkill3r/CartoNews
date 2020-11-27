@@ -32,3 +32,9 @@ npm-debug.log*
 src/app/user/insert/insert.page.html
 src/app/app.component.html
 src/app/user/login/login.page.html
+
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build

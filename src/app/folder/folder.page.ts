@@ -76,18 +76,18 @@ export class FolderPage implements OnInit {
   latitude: number;
   longitude: number;
 
-  getAddressFromCoords(latitude, longitude) {
-    console.log("getAddressFromCoords" + latitude + " " + longitude);
+  getAddressFromCoords(lattitude, longitude) {
+    console.log("getAddressFromCoords" + lattitude + " " + longitude);
     let options: NativeGeocoderOptions = {
       useLocale: true,
       maxResults: 5
     };
 
-    this.nativeGeocoder.reverseGeocode(latitude, longitude, options).then((results: NativeGeocoderResult[]) => {
+    this.nativeGeocoder.reverseGeocode(lattitude, longitude, options).then((result: NativeGeocoderResult[]) => {
       this.address = "";
       let responseAddress = [];
       
-      for (let [key, value] of Object.entries(results[0])) {
+      for (let [key, value] of Object.entries(result[0])) {
         if (value.length > 0)
           responseAddress.push(value);
       }
@@ -123,7 +123,7 @@ export class FolderPage implements OnInit {
         this.latitude = this.map.center.lat();
         this.longitude = this.map.center.lng();
 
-        this.getAddressFromCoords(this.map.center.alt(),this.map.center.lng())
+        this.getAddressFromCoords(this.map.center.lat(),this.map.center.lng())
       });
     }).catch((error) => {
       console.log('Error getting location!',error);

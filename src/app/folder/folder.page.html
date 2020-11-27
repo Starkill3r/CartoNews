@@ -25,13 +25,13 @@
       <p>
         {{article.description}}
       </p>
-      <ion-button ion-button fill="outline" href="{{article.url}}" large>Read full article</ion-button>
+      <ion-button ion-button fill="outline" href="{{article.url}}" large>Ir para o artigo</ion-button>
   
     </ion-card-content>
   </ion-card>
 </ion-content>
 
-<ion-header [translucent]="true" *ngIf="folder == 'Maps'">
+<ion-header [translucent]="true" [hidden]="folder != 'Map'">
 
   <ion-toolbar color="warning">
     <ion-button (click)="loadMap()" shape="round" color="dark">
@@ -43,7 +43,7 @@
 
 </ion-header>
 
-<ion-content [fullscreen]="true" *ngIf="folder == 'Maps'">
+<ion-content [fullscreen]="true" [hidden]="folder != 'Map'">
 
   <div class="map-wrapper">
     <div id="map_center">
